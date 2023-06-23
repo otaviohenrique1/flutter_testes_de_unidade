@@ -10,5 +10,20 @@ void main() {
       home: BankInherited(child: const Home()),
     ));
     final spentFinder = find.text("Spent");
+    expect(spentFinder, findsOneWidget);
+  });
+
+  testWidgets('Finds a LinearProgressIndicator', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: BankInherited(child: const Home()),
+    ));
+    expect(find.byType(LinearProgressIndicator), findsOneWidget);
+  });
+
+  testWidgets('Finds a AccountStatus', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: BankInherited(child: const Home()),
+    ));
+    expect(find.byKey(const Key("testKey")), findsOneWidget);
   });
 }
