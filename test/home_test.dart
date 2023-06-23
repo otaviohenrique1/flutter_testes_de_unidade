@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_testes_de_unidade/components/box_card.dart';
 import 'package:flutter_testes_de_unidade/data/bank_inherited.dart';
 import 'package:flutter_testes_de_unidade/screens/home.dart';
 
@@ -25,5 +26,18 @@ void main() {
       home: BankInherited(child: const Home()),
     ));
     expect(find.byKey(const Key("testKey")), findsOneWidget);
+  });
+
+  testWidgets("Finds 5 BoxCards", (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: BankInherited(child: const Home()),
+    ));
+    expect(find.byWidgetPredicate((widget) {
+      if (widget is BoxCard) {
+        return true;
+      } else {
+        return false;
+      }
+    }), findsNWidgets(5));
   });
 }
