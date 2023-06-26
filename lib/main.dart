@@ -1,3 +1,4 @@
+import 'package:flutter_testes_de_unidade/data/bank_http.dart';
 import 'package:flutter_testes_de_unidade/data/bank_inherited.dart';
 import 'package:flutter_testes_de_unidade/screens/home.dart';
 import 'package:flutter_testes_de_unidade/themes/purple_theme.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: purpleTheme,
-      home: BankInherited(child: const Home()),
+      home: BankInherited(child: Home(api: BankHttp().dolarToReal())),
     );
   }
 }
